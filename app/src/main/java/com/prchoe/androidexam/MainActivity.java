@@ -24,6 +24,8 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.prchoe.androidexam.layout.FrameLayoutActivity;
+
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -52,8 +54,7 @@ public class MainActivity extends ListActivity {
         List<Map<String, Object>> myData = new ArrayList<>();
 
         // 메뉴 추가 부분
-        // addItem(myData, "TransitionDrawable",
-        // TransitionDrawableExamActivity.class);
+        addItem(myData, "FrameLayout", FrameLayoutActivity.class);
         // ----- 메뉴 추가 여기까지
 
         // 이름 순 정렬
