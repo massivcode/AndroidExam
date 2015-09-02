@@ -25,6 +25,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.prchoe.androidexam.layout.FrameLayoutActivity;
+import com.prchoe.androidexam.mission.Mission01Activity;
 
 import java.text.Collator;
 import java.util.ArrayList;
@@ -55,6 +56,7 @@ public class MainActivity extends ListActivity {
 
         // 메뉴 추가 부분
         addItem(myData, "FrameLayout", FrameLayoutActivity.class);
+        addItem(myData, "Mission01", Mission01Activity.class);
         // ----- 메뉴 추가 여기까지
 
         // 이름 순 정렬
