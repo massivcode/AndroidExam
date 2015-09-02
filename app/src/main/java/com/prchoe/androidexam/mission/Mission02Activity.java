@@ -1,3 +1,4 @@
+
 package com.prchoe.androidexam.mission;
 
 import android.os.Bundle;
@@ -18,7 +19,7 @@ public class Mission02Activity extends AppCompatActivity implements View.OnClick
     private Button mSendBtn, mCloseBtn;
     private EditText mMessageEditText;
     private TextView mMessageLengthTV;
-    private String message;
+    private String message = "";
     private int messageLength = 0;
 
     @Override
@@ -49,14 +50,19 @@ public class Mission02Activity extends AppCompatActivity implements View.OnClick
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() <= 40) {
-                    getMessage();
-                } else {
+
+
+                if (messageLength >= 80) {
                     InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(mMessageEditText.getWindowToken(), 0);
-                    Toast.makeText(getApplicationContext(), "80 바이트를 초과하였습니다.", Toast.LENGTH_SHORT).show();
-                    mMessageEditText.setText(message);
+                    Toast.makeText(getApplicationContext(), "80 바이트를 초과하였습니다.", Toast.LENGTH_SHORT)
+                            .show();
+                } else {
+                    message = s.toString();
+                    messageLength = message.getBytes().length;
+                    mMessageLengthTV.setText(messageLength + " / 80 바이트");
                 }
+
             }
 
             @Override
@@ -80,9 +86,4 @@ public class Mission02Activity extends AppCompatActivity implements View.OnClick
 
     }
 
-    private void getMessage() {
-        message = mMessageEditText.getText().toString();
-        messageLength = mMessageEditText.getText().length() * 2;
-        mMessageLengthTV.setText(messageLength + " / 80 바이트");
-    }
 }
