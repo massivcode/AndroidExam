@@ -60,7 +60,6 @@ public class Mission01Activity extends AppCompatActivity implements ImageView.On
             mTopImage.setImageDrawable(null);
             mBottomImage.setImageResource(R.drawable.bada1);
         }
-
     }
 
 
