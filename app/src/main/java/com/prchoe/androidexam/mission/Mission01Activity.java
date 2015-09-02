@@ -42,10 +42,10 @@ public class Mission01Activity extends AppCompatActivity implements ImageView.On
 
     private void move(int id) {
         switch (id) {
-            case R.id.up_btn :
+            case R.id.up_btn:
                 moveUp();
                 break;
-            case R.id.down_btn :
+            case R.id.down_btn:
                 moveDown();
                 break;
         }
