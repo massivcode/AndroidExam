@@ -37,11 +37,8 @@ public class Mission01Activity extends AppCompatActivity implements ImageView.On
 
     @Override
     public void onClick(View v) {
-        move(v.getId());
-    }
 
-    private void move(int id) {
-        switch (id) {
+        switch (v.getId()) {
             case R.id.up_btn:
                 moveUp();
                 break;
