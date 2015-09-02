@@ -23,11 +23,6 @@ public class Mission01Activity extends AppCompatActivity implements ImageView.On
 
     }
 
-    @Override
-    public void onClick(View v) {
-        move(v.getId());
-    }
-
     private void initView() {
         mTopImage = (ImageView) findViewById(R.id.topImage);
         mBottomImage = (ImageView) findViewById(R.id.bottomImage);
@@ -38,6 +33,11 @@ public class Mission01Activity extends AppCompatActivity implements ImageView.On
     private void initListener() {
         mUp_btn.setOnClickListener(this);
         mDown_btn.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        move(v.getId());
     }
 
     private void move(int id) {
