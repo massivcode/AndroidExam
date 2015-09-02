@@ -49,12 +49,19 @@ public class Mission02Activity extends AppCompatActivity implements View.OnClick
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                if (s.length() <= 40) {
+                    getMessage();
+                } else {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(mMessageEditText.getWindowToken(), 0);
+                    Toast.makeText(getApplicationContext(), "80 바이트를 초과하였습니다.", Toast.LENGTH_SHORT).show();
+                    mMessageEditText.setText(message);
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                getMessage();
+
             }
         });
     }
@@ -63,7 +70,8 @@ public class Mission02Activity extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.sendBtn:
-                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                String result = "문자 내용 : " + message + "\r\n\r\n문자 길이 : " + messageLength + " 바이트";
+                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.closeBtn:
                 finish();
@@ -73,15 +81,8 @@ public class Mission02Activity extends AppCompatActivity implements View.OnClick
     }
 
     private void getMessage() {
-        if (messageLength < 80) {
-            message = mMessageEditText.getText().toString();
-            messageLength = mMessageEditText.getText().length();
-        } else {
-            InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(mMessageEditText.getWindowToken(), 0);
-            Toast.makeText(getApplicationContext(), "80 바이트를 초과하였습니다.", Toast.LENGTH_SHORT).show();
-        }
-
+        message = mMessageEditText.getText().toString();
+        messageLength = mMessageEditText.getText().length() * 2;
         mMessageLengthTV.setText(messageLength + " / 80 바이트");
     }
 }
