@@ -52,17 +52,14 @@ public class Mission01Activity extends AppCompatActivity implements ImageView.On
     }
 
     private void moveUp() {
-        if (mBottomImage.getResources() == null) {
-
-        } else {
+        if (mBottomImage.getResources() != null) {
             mBottomImage.setImageDrawable(null);
             mTopImage.setImageResource(R.drawable.bada1);
         }
     }
 
     private void moveDown() {
-        if (mTopImage.getResources() == null) {
-        } else {
+        if (mTopImage.getResources() != null) {
             mTopImage.setImageDrawable(null);
             mBottomImage.setImageResource(R.drawable.bada1);
         }
