@@ -1,8 +1,10 @@
 package com.prchoe.androidexam.mission;
 
-import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
@@ -11,11 +13,13 @@ import com.prchoe.androidexam.R;
 /**
  * Created by massivCode on 2015-09-03.
  */
-public class Mission03_menuActivity extends Activity implements View.OnClickListener{
+public class Mission03_menuActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button mBtn1, mBtn2, mBtn3;
+    private Button mDialogClose;
     private Intent intent;
-
+    private AlertDialog.Builder mBuilder;
+    private String message;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +29,7 @@ public class Mission03_menuActivity extends Activity implements View.OnClickList
         initListener();
 
         intent = new Intent();
+
     }
 
     private void initView() {
@@ -39,24 +44,47 @@ public class Mission03_menuActivity extends Activity implements View.OnClickList
         mBtn3.setOnClickListener(this);
     }
 
+    private void setMDialog() {
+        mBuilder = new AlertDialog.Builder(this);
+        mBuilder.setTitle(message);
+        mBuilder.setPositiveButton("닫기", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Mission03_menuActivity.this.finish();
+            }
+        });
+
+        AlertDialog dialog = mBuilder.create();
+        dialog.show();
+    }
+
+
+
+    private void setMessage(Button button) {
+        message = button.getText().toString();
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
 
             case R.id.btn_1:
-                intent.putExtra("message", mBtn1.getText().toString());
+                setMessage(mBtn1);
+                intent.putExtra("message", message);
                 setResult(1, intent);
-                finish();
+                setMDialog();
                 break;
             case R.id.btn_2:
-                intent.putExtra("message", mBtn2.getText().toString());
+                setMessage(mBtn2);
+                intent.putExtra("message", message);
                 setResult(2, intent);
-                finish();
+                setMDialog();
                 break;
             case R.id.btn_3:
-                intent.putExtra("message", mBtn3.getText().toString());
+                setMessage(mBtn3);
+                intent.putExtra("message", message);
                 setResult(3, intent);
-                finish();
+                setMDialog();
                 break;
         }
     }
