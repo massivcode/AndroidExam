@@ -7,4 +7,5 @@
     <string name="title_activity_mission01">Mission01Activity</string>
     <string name="title_activity_mission02">Mission02Activity</string>
     <string name="title_activity_calendar">CalendarActivity</string>
+    <string name="title_activity_mission03">Mission03Activity</string>
 </resources>

@@ -32,6 +32,13 @@
             android:name=".practice.CalendarActivity"
             android:label="@string/title_activity_calendar" >
         </activity>
+        <activity
+            android:name=".mission.Mission03Activity"
+            android:label="@string/title_activity_mission03" >
+        </activity>
+        <activity android:name=".mission.Mission03_menuActivity" android:label="Mission03_menuActivity">
+
+        </activity>
     </application>
 
 </manifest>

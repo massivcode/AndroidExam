@@ -27,6 +27,7 @@ import android.widget.SimpleAdapter;
 import com.prchoe.androidexam.layout.FrameLayoutActivity;
 import com.prchoe.androidexam.mission.Mission01Activity;
 import com.prchoe.androidexam.mission.Mission02Activity;
+import com.prchoe.androidexam.mission.Mission03Activity;
 import com.prchoe.androidexam.practice.CalendarActivity;
 
 import java.text.Collator;
@@ -60,6 +61,7 @@ public class MainActivity extends ListActivity {
         addItem(myData, "FrameLayout", FrameLayoutActivity.class);
         addItem(myData, "Mission01", Mission01Activity.class);
         addItem(myData, "Mission02", Mission02Activity.class);
+        addItem(myData, "Mission03", Mission03Activity.class);
         addItem(myData, "월별 캘린더 만들기", CalendarActivity.class);
         // ----- 메뉴 추가 여기까지
 
