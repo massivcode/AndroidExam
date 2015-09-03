@@ -61,7 +61,7 @@ public class MainActivity extends ListActivity {
         addItem(myData, "FrameLayout", FrameLayoutActivity.class);
         addItem(myData, "Mission01", Mission01Activity.class);
         addItem(myData, "Mission02", Mission02Activity.class);
-        addItem(myData, "Mission03", Mission03Activity.class);
+        addItem(myData, "Mission03 & 04", Mission03Activity.class);
         addItem(myData, "월별 캘린더 만들기", CalendarActivity.class);
         // ----- 메뉴 추가 여기까지
 
