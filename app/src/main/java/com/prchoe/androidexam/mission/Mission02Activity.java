@@ -52,22 +52,24 @@ public class Mission02Activity extends AppCompatActivity implements View.OnClick
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
 
-                if (messageLength >= 80) {
-                    InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(mMessageEditText.getWindowToken(), 0);
-                    Toast.makeText(getApplicationContext(), "80 바이트를 초과하였습니다.", Toast.LENGTH_SHORT)
-                            .show();
-                } else {
-                    message = s.toString();
-                    messageLength = message.getBytes().length;
-                    mMessageLengthTV.setText(messageLength + " / 80 바이트");
-                }
+
 
             }
 
             @Override
             public void afterTextChanged(Editable s) {
+                if (messageLength >= 80) {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(mMessageEditText.getWindowToken(), 0);
+                    Toast.makeText(getApplicationContext(), "80 바이트를 초과하였습니다.", Toast.LENGTH_SHORT)
+                            .show();
+                    mMessageEditText.setText(message);
+                } else {
+                    message = s.toString();
+                    messageLength = message.getBytes().length;
+                    mMessageLengthTV.setText(messageLength + " / 80 바이트");
 
+                }
             }
         });
     }

@@ -28,6 +28,10 @@
             android:name=".mission.Mission02Activity"
             android:label="@string/title_activity_mission02" >
         </activity>
+        <activity
+            android:name=".practice.CalendarActivity"
+            android:label="@string/title_activity_calendar" >
+        </activity>
     </application>
 
 </manifest>
