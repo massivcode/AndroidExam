@@ -29,6 +29,7 @@ import com.prchoe.androidexam.layout.FrameLayoutActivity;
 import com.prchoe.androidexam.mission.Mission01Activity;
 import com.prchoe.androidexam.mission.Mission02Activity;
 import com.prchoe.androidexam.mission.Mission03Activity;
+import com.prchoe.androidexam.mission.Mission05Activity;
 import com.prchoe.androidexam.practice.CalendarActivity;
 
 import java.text.Collator;
@@ -60,9 +61,10 @@ public class MainActivity extends ListActivity {
 
         // 메뉴 추가 부분
         addItem(myData, "FrameLayout", FrameLayoutActivity.class);
-        addItem(myData, "Mission01", Mission01Activity.class);
-        addItem(myData, "Mission02", Mission02Activity.class);
-        addItem(myData, "Mission03 & 04", Mission03Activity.class);
+        addItem(myData, "도전! 01: 한 화면에 두개의 이미지 뷰 배치하기", Mission01Activity.class);
+        addItem(myData, "도전! 02: SMS 입력 화면 만들고 글자수 표시하기", Mission02Activity.class);
+        addItem(myData, "도전! 03 & 04: 영업관리 앱용 화면 만들기", Mission03Activity.class);
+        addItem(myData, "도전! 05: 고객 정보 입력 화면의 구성", Mission05Activity.class);
         addItem(myData, "월별 캘린더 만들기", CalendarActivity.class);
         addItem(myData, "화면이동 예제", ActivityExamActivity.class);
         // ----- 메뉴 추가 여기까지
