@@ -1,8 +1,10 @@
 
 package com.prchoe.androidexam.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -36,6 +38,7 @@ public class ActivityExamActivity extends AppCompatActivity implements Layout {
     public void initListener() {
         findViewById(R.id.sendBtn).setOnClickListener(this);
         findViewById(R.id.sendBtn2).setOnClickListener(this);
+        findViewById(R.id.dialog_btn).setOnClickListener(this);
     }
 
     @Override
@@ -50,10 +53,28 @@ public class ActivityExamActivity extends AppCompatActivity implements Layout {
             case R.id.sendBtn2:
                 btn2Click();
                 break;
+            case R.id.dialog_btn:
+                openDialog();
+                break;
         }
 
 
 
+    }
+
+    private void openDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(ActivityExamActivity.this);
+        builder.setTitle("타이틀");
+        builder.setMessage("메세지");
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getApplicationContext(), "확인 눌렸어요", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("닫기", null);
+        builder.setIcon(R.mipmap.ic_launcher);
+        builder.show();
     }
 
     private void btn1Click() {
