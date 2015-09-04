@@ -24,6 +24,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.prchoe.androidexam.activity.ActivityExamActivity;
 import com.prchoe.androidexam.layout.FrameLayoutActivity;
 import com.prchoe.androidexam.mission.Mission01Activity;
 import com.prchoe.androidexam.mission.Mission02Activity;
@@ -63,6 +64,7 @@ public class MainActivity extends ListActivity {
         addItem(myData, "Mission02", Mission02Activity.class);
         addItem(myData, "Mission03 & 04", Mission03Activity.class);
         addItem(myData, "월별 캘린더 만들기", CalendarActivity.class);
+        addItem(myData, "화면이동 예제", ActivityExamActivity.class);
         // ----- 메뉴 추가 여기까지
 
         // 이름 순 정렬

@@ -36,8 +36,17 @@
             android:name=".mission.Mission03Activity"
             android:label="@string/title_activity_mission03" >
         </activity>
-        <activity android:name=".mission.Mission03_menuActivity" android:label="Mission03_menuActivity">
-
+        <activity
+            android:name=".mission.Mission03_menuActivity"
+            android:label="Mission03_menuActivity" >
+        </activity>
+        <activity
+            android:name=".activity.ActivityExamActivity"
+            android:label="@string/title_activity_activity_exam" >
+        </activity>
+        <activity
+            android:name=".activity.TargetActivity"
+            android:label="@string/title_activity_target" >
         </activity>
     </application>
 

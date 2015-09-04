@@ -16,7 +16,6 @@ import com.prchoe.androidexam.R;
 public class Mission03_menuActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button mBtn1, mBtn2, mBtn3;
-    private Button mDialogClose;
     private Intent intent;
     private AlertDialog.Builder mBuilder;
     private String message;
