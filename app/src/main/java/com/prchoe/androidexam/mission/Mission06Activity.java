@@ -1,3 +1,4 @@
+
 package com.prchoe.androidexam.mission;
 
 import android.os.Bundle;
@@ -36,14 +37,13 @@ public class Mission06Activity extends AppCompatActivity implements Layout {
         flowDown = AnimationUtils.loadAnimation(this, R.anim.flow_down);
     }
 
-
     @Override
     public void initView() {
-        mToggleButton = (Button)findViewById(R.id.button_toggle);
-        mSendButton = (Button)findViewById(R.id.button_send);
-        mSearchBar = (LinearLayout)findViewById(R.id.layout);
-        mHttpET = (EditText)findViewById(R.id.http_edit_text);
-        mWebView = (WebView)findViewById(R.id.webView);
+        mToggleButton = (Button) findViewById(R.id.button_toggle);
+        mSendButton = (Button) findViewById(R.id.button_send);
+        mSearchBar = (LinearLayout) findViewById(R.id.layout);
+        mHttpET = (EditText) findViewById(R.id.http_edit_text);
+        mWebView = (WebView) findViewById(R.id.webView);
     }
 
     @Override
@@ -58,7 +58,7 @@ public class Mission06Activity extends AppCompatActivity implements Layout {
         switch (v.getId()) {
             case R.id.button_send:
 
-                String url =  "http://"+ mHttpET.getText().toString();
+                String url = "http://" + mHttpET.getText().toString();
                 Toast.makeText(getApplicationContext(), url, Toast.LENGTH_SHORT).show();
                 // 웹뷰에서 자바스크립트실행가능
                 mWebView.getSettings().setJavaScriptEnabled(true);
@@ -67,13 +67,12 @@ public class Mission06Activity extends AppCompatActivity implements Layout {
                 // WebViewClient 지정
                 mWebView.setWebViewClient(new WebViewClient());
 
-
                 break;
             case R.id.button_toggle:
                 flowUp.setAnimationListener(new FlowAnimationListener());
                 flowDown.setAnimationListener(new FlowAnimationListener());
 
-                if(mSearchBar.getVisibility() == View.GONE) {
+                if (mSearchBar.getVisibility() == View.GONE) {
                     mToggleButton.setText("△");
                     mSearchBar.startAnimation(flowDown);
                     mSearchBar.setVisibility(View.VISIBLE);
