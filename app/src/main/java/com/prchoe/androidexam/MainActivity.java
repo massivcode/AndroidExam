@@ -25,6 +25,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.prchoe.androidexam.activity.ActivityExamActivity;
+import com.prchoe.androidexam.activity.WebActivity;
 import com.prchoe.androidexam.layout.FrameLayoutActivity;
 import com.prchoe.androidexam.mission.Mission01Activity;
 import com.prchoe.androidexam.mission.Mission02Activity;
@@ -71,6 +72,7 @@ public class MainActivity extends ListActivity {
         addItem(myData, "갤러리에서 사진 선택하여 표시하기", MissionExtra01Activity.class);
         addItem(myData, "월별 캘린더 만들기", CalendarActivity.class);
         addItem(myData, "화면이동 예제", ActivityExamActivity.class);
+        addItem(myData, "WebView 연습", WebActivity.class);
         // ----- 메뉴 추가 여기까지
 
         // 이름 순 정렬

@@ -13,4 +13,5 @@
     <string name="title_activity_mission05">Mission05Activity</string>
     <string name="title_activity_mission_extra01">MissionExtra01Activity</string>
     <string name="title_activity_mission06">Mission06Activity</string>
+    <string name="title_activity_web">WebActivity</string>
 </resources>

@@ -22,7 +22,8 @@ public class Mission06Activity extends AppCompatActivity implements Layout {
     private LinearLayout mSearchBar;
     private EditText mHttpET;
     private WebView mWebView;
-    private Animation flowAnim;
+    private Animation flowUp;
+    private Animation flowDown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,8 @@ public class Mission06Activity extends AppCompatActivity implements Layout {
 
         initView();
         initListener();
-        flowAnim = AnimationUtils.loadAnimation(this, R.anim.flow);
+        flowUp = AnimationUtils.loadAnimation(this, R.anim.flow_up);
+        flowDown = AnimationUtils.loadAnimation(this, R.anim.flow_down);
     }
 
 
@@ -68,15 +70,16 @@ public class Mission06Activity extends AppCompatActivity implements Layout {
 
                 break;
             case R.id.button_toggle:
-                flowAnim.setAnimationListener(new FlowAnimationListener());
-                mToggleButton.startAnimation(flowAnim);
-                mSearchBar.startAnimation(flowAnim);
+                flowUp.setAnimationListener(new FlowAnimationListener());
+                flowDown.setAnimationListener(new FlowAnimationListener());
+
                 if(mSearchBar.getVisibility() == View.GONE) {
                     mToggleButton.setText("△");
-
+                    mSearchBar.startAnimation(flowDown);
                     mSearchBar.setVisibility(View.VISIBLE);
                 } else {
                     mToggleButton.setText("▽");
+                    mSearchBar.startAnimation(flowUp);
                     mSearchBar.setVisibility(View.GONE);
                 }
                 break;
