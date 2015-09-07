@@ -3,6 +3,8 @@ package com.prchoe.androidexam.mission;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
@@ -20,6 +22,7 @@ public class Mission06Activity extends AppCompatActivity implements Layout {
     private LinearLayout mSearchBar;
     private EditText mHttpET;
     private WebView mWebView;
+    private Animation flowAnim;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,7 @@ public class Mission06Activity extends AppCompatActivity implements Layout {
 
         initView();
         initListener();
+        flowAnim = AnimationUtils.loadAnimation(this, R.anim.flow);
     }
 
 
@@ -64,6 +68,9 @@ public class Mission06Activity extends AppCompatActivity implements Layout {
 
                 break;
             case R.id.button_toggle:
+                flowAnim.setAnimationListener(new FlowAnimationListener());
+                mToggleButton.startAnimation(flowAnim);
+                mSearchBar.startAnimation(flowAnim);
                 if(mSearchBar.getVisibility() == View.GONE) {
                     mToggleButton.setText("△");
 
@@ -75,5 +82,23 @@ public class Mission06Activity extends AppCompatActivity implements Layout {
                 break;
         }
 
+    }
+
+    private final class FlowAnimationListener implements Animation.AnimationListener {
+
+        @Override
+        public void onAnimationStart(Animation animation) {
+
+        }
+
+        @Override
+        public void onAnimationEnd(Animation animation) {
+
+        }
+
+        @Override
+        public void onAnimationRepeat(Animation animation) {
+
+        }
     }
 }
