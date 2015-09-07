@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.prchoe.androidexam" >
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -51,6 +53,14 @@
         <activity
             android:name=".mission.Mission05Activity"
             android:label="@string/title_activity_mission05" >
+        </activity>
+        <activity
+            android:name=".mission.MissionExtra01Activity"
+            android:label="@string/title_activity_mission_extra01" >
+        </activity>
+        <activity
+            android:name=".mission.Mission06Activity"
+            android:label="@string/title_activity_mission06" >
         </activity>
     </application>
 
