@@ -6,6 +6,11 @@
 
     tools:context="com.prchoe.androidexam.activity.WebActivity">
 
+    <EditText
+        android:id="@+id/et_web_address"
+        android:hint="http://"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <WebView
         android:id="@+id/web_view"
         android:layout_width="match_parent"
