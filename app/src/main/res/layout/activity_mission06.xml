@@ -13,38 +13,13 @@
         android:text="▽"
         android:textSize="30sp" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:id="@+id/layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:visibility="visible">
-
-            <EditText
-                android:id="@+id/http_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@null"
-                android:hint="http:" />
-
-            <Button
-                android:id="@+id/button_send"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="이동" />
 
 
-        </LinearLayout>
+
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:foregroundGravity="top"
             >
 
             <WebView
@@ -53,11 +28,38 @@
                 android:layout_height="match_parent"
                 ></WebView>
 
+
+            <LinearLayout
+                android:id="@+id/layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/http_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="http://" />
+
+                <Button
+                    android:id="@+id/button_send"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="이동" />
+
+
+            </LinearLayout>
+
+
+
         </FrameLayout>
 
 
 
-    </RelativeLayout>
+
 
 
 </LinearLayout>

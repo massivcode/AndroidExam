@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.prchoe.androidexam.R;
 import com.prchoe.androidexam.interfaces.Layout;
@@ -49,6 +51,16 @@ public class Mission06Activity extends AppCompatActivity implements Layout {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_send:
+
+                String url =  "http://"+ mHttpET.getText().toString();
+                Toast.makeText(getApplicationContext(), url, Toast.LENGTH_SHORT).show();
+                // 웹뷰에서 자바스크립트실행가능
+                mWebView.getSettings().setJavaScriptEnabled(true);
+                // 구글홈페이지 지정
+                mWebView.loadUrl(url);
+                // WebViewClient 지정
+                mWebView.setWebViewClient(new WebViewClient());
+
 
                 break;
             case R.id.button_toggle:
