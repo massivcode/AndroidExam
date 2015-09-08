@@ -3,6 +3,7 @@ package com.prchoe.androidexam.calendar;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,26 +37,28 @@ public class CalendarAdapter extends BaseAdapter {
     private void createCalendar(Calendar calendar) {
         mList = new ArrayList<>();
 
-
         // 오늘
-        int month = calendar.get(Calendar.MONTH) + 1;
+        int month = calendar.get(Calendar.MONTH);
         int year = calendar.get(Calendar.YEAR);
 
+        // 마지막 날
+        int lastDay = calendar.getActualMaximum(Calendar.DATE);
         // 이달의 첫번째 날
         calendar.set(Calendar.DAY_OF_MONTH, 1);
         int firtstDay = calendar.get(Calendar.DAY_OF_WEEK);
+
+
 
         for (int i = 1; i < firtstDay; i++) {
             mList.add(null);
         }
 
-        // 마지막 날
-        int lastDay = calendar.getActualMaximum(Calendar.DATE);
-
         // 이번달 달력 데이터
         for (int i = 1; i <= lastDay; i++) {
             mList.add(new GregorianCalendar(year, month, i));
         }
+
+
     }
 
     private void changeMonth(int month) {
@@ -117,15 +120,15 @@ public class CalendarAdapter extends BaseAdapter {
         Calendar calendar = mList.get(position);
 
         if (calendar != null) {
-
-
-
+            Log.d("test", "date : " + calendar.get(Calendar.DATE) + "\r\n pos : " + position);
             viewHolder.dateTextView.setText("" + calendar.get(Calendar.DATE));
 
-            if(position % 7 == 0) {
+            if (position % 7 == 0) {
                 viewHolder.dateTextView.setTextColor(Color.RED);
-            } else if(position % 6 == 0) {
+            } else if ((position + 1) % 7 == 0) {
                 viewHolder.dateTextView.setTextColor(Color.BLUE);
+            } else {
+                viewHolder.dateTextView.setTextColor(Color.BLACK);
             }
 
         } else {
