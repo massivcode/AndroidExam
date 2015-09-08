@@ -26,13 +26,15 @@ import android.widget.SimpleAdapter;
 
 import com.prchoe.androidexam.activity.ActivityExamActivity;
 import com.prchoe.androidexam.activity.WebActivity;
+import com.prchoe.androidexam.animation.AnimationActivity;
 import com.prchoe.androidexam.layout.FrameLayoutActivity;
 import com.prchoe.androidexam.mission.Mission01Activity;
 import com.prchoe.androidexam.mission.Mission02Activity;
-import com.prchoe.androidexam.mission.Mission03Activity;
 import com.prchoe.androidexam.mission.Mission05Activity;
 import com.prchoe.androidexam.mission.Mission06Activity;
 import com.prchoe.androidexam.mission.MissionExtra01Activity;
+import com.prchoe.androidexam.mission.mission03.Mission03Activity;
+import com.prchoe.androidexam.mission.mission_extra_02.MissionExtra02Activity;
 import com.prchoe.androidexam.practice.CalendarActivity;
 
 import java.text.Collator;
@@ -69,10 +71,12 @@ public class MainActivity extends ListActivity {
         addItem(myData, "도전! 03 & 04: 영업관리 앱용 화면 만들기", Mission03Activity.class);
         addItem(myData, "도전! 05: 고객 정보 입력 화면의 구성", Mission05Activity.class);
         addItem(myData, "도전! 06: 웹브라우저 화면 구성", Mission06Activity.class);
-        addItem(myData, "갤러리에서 사진 선택하여 표시하기", MissionExtra01Activity.class);
+        addItem(myData, "Extra 01: 갤러리에서 사진 선택하여 표시하기", MissionExtra01Activity.class);
+        addItem(myData, "Extra 02: ListView에 Animation 적용하기", MissionExtra02Activity.class);
         addItem(myData, "월별 캘린더 만들기", CalendarActivity.class);
         addItem(myData, "화면이동 예제", ActivityExamActivity.class);
         addItem(myData, "WebView 연습", WebActivity.class);
+        addItem(myData, "Animation 연습", AnimationActivity.class);
         // ----- 메뉴 추가 여기까지
 
         // 이름 순 정렬

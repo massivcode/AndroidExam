@@ -25,6 +25,7 @@ public class Mission06Activity extends AppCompatActivity implements Layout {
     private WebView mWebView;
     private Animation flowUp;
     private Animation flowDown;
+    private Animation alpha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class Mission06Activity extends AppCompatActivity implements Layout {
         initListener();
         flowUp = AnimationUtils.loadAnimation(this, R.anim.flow_up);
         flowDown = AnimationUtils.loadAnimation(this, R.anim.flow_down);
+        alpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
     }
 
     @Override
@@ -69,9 +71,7 @@ public class Mission06Activity extends AppCompatActivity implements Layout {
 
                 break;
             case R.id.button_toggle:
-                flowUp.setAnimationListener(new FlowAnimationListener());
-                flowDown.setAnimationListener(new FlowAnimationListener());
-
+                    mToggleButton.startAnimation(alpha);
                 if (mSearchBar.getVisibility() == View.GONE) {
                     mToggleButton.setText("△");
                     mSearchBar.startAnimation(flowDown);
@@ -86,21 +86,4 @@ public class Mission06Activity extends AppCompatActivity implements Layout {
 
     }
 
-    private final class FlowAnimationListener implements Animation.AnimationListener {
-
-        @Override
-        public void onAnimationStart(Animation animation) {
-
-        }
-
-        @Override
-        public void onAnimationEnd(Animation animation) {
-
-        }
-
-        @Override
-        public void onAnimationRepeat(Animation animation) {
-
-        }
-    }
 }

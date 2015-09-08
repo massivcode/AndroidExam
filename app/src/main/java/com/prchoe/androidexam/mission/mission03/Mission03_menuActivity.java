@@ -1,4 +1,4 @@
-package com.prchoe.androidexam.mission;
+package com.prchoe.androidexam.mission.mission03;
 
 import android.content.DialogInterface;
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package com.prchoe.androidexam.mission;
+package com.prchoe.androidexam.mission.mission03;
 
 import android.content.Intent;
 import android.os.Bundle;

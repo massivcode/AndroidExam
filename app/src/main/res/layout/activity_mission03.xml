@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.prchoe.androidexam.mission.Mission03Activity">
+    tools:context="com.prchoe.androidexam.mission.mission03.Mission03Activity">
 
 <LinearLayout
     android:orientation="vertical"
