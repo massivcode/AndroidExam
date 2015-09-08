@@ -71,9 +71,11 @@
             android:name=".mission.mission_extra_02.MissionExtra02Activity"
             android:label="@string/title_activity_mission_extra02" >
         </activity>
+        <activity android:name=".animation.AnimationActivity" />
         <activity
-            android:name=".animation.AnimationActivity"
-            />
+            android:name=".calendar.CalendarActivity"
+            android:label="@string/title_activity_calendar" >
+        </activity>
     </application>
 
 </manifest>

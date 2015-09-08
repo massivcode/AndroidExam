@@ -35,7 +35,7 @@ import com.prchoe.androidexam.mission.Mission06Activity;
 import com.prchoe.androidexam.mission.MissionExtra01Activity;
 import com.prchoe.androidexam.mission.mission03.Mission03Activity;
 import com.prchoe.androidexam.mission.mission_extra_02.MissionExtra02Activity;
-import com.prchoe.androidexam.practice.CalendarActivity;
+import com.prchoe.androidexam.calendar.CalendarActivity;
 
 import java.text.Collator;
 import java.util.ArrayList;
