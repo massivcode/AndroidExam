@@ -2,12 +2,14 @@ package com.prchoe.androidexam.calendar;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 /**
  * Created by massivCode on 2015-09-08.
  */
-public class CalendarView extends GridView {
+public class CalendarView extends GridView implements AdapterView.OnItemClickListener {
 
     // 모든 뷰는 반드시 생성자가 3개 있어야 한다.
 
@@ -33,6 +35,22 @@ public class CalendarView extends GridView {
         setBackgroundResource(android.R.color.darker_gray);     // 배경을 회색으로
         setHorizontalSpacing(1);
         setVerticalSpacing(1);
+
+        // 아이템 클릭 이벤트
+        setOnItemClickListener(this);
     }
 
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if (getAdapter() != null) {
+            if(getAdapter() instanceof CalendarAdapter) {
+                CalendarAdapter adapter = (CalendarAdapter)getAdapter();
+                adapter.setSelectedPosition(position);
+                adapter.notifyDataSetChanged();
+            } else {
+                throw new IllegalStateException("CalendarAdapter를 셋팅해야 합니다.");
+            }
+        }
+    }
 }

@@ -4,7 +4,6 @@ package com.prchoe.androidexam.calendar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -18,7 +17,6 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
     private CalendarView mCalendarView;
     private TextView mPresentTV;
     private Button mPrevButton, mNextButton;
-    private View oldView;
 
 
     @Override
@@ -36,22 +34,6 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         mCalendarView.setAdapter(mCalendarAdapter);
         mPresentTV.setText(updateTitle(mCalendarAdapter.getCalendar()));
 
-        mCalendarView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-//                if (oldView != null) {
-//                    oldView.setBackgroundColor(Color.WHITE);
-//                }
-//                view.setBackgroundColor(Color.parseColor("#B3CA6F"));
-//
-//                oldView = view;
-
-                mCalendarAdapter.setSelectedPosition(position);
-                // 다시 그리기
-                mCalendarAdapter.notifyDataSetChanged();
-            }
-        });
 
 
     }
