@@ -132,7 +132,6 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
 
             }
         });
-        mCalendarAdapter.setHasData(true, position);
 
 
         builder.show();
