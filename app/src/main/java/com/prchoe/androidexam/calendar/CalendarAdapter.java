@@ -25,6 +25,16 @@ public class CalendarAdapter extends BaseAdapter {
     private Context mContext;
     private Calendar mCalendar;
 
+    private int mSelectedPosition = -1;
+
+    public int getSelectedPosition() {
+        return mSelectedPosition;
+    }
+
+    public void setSelectedPosition(int selectedPosition) {
+        this.mSelectedPosition = selectedPosition;
+    }
+
     public CalendarAdapter(Context context) {
         mContext = context;
 
@@ -46,8 +56,6 @@ public class CalendarAdapter extends BaseAdapter {
         calendar.set(Calendar.DAY_OF_MONTH, 1);
         int firtstDay = calendar.get(Calendar.DAY_OF_WEEK);
 
-
-
         for (int i = 1; i < firtstDay; i++) {
             mList.add(null);
         }
@@ -57,10 +65,10 @@ public class CalendarAdapter extends BaseAdapter {
             mList.add(new GregorianCalendar(year, month, i));
         }
 
-
     }
 
     private void changeMonth(int month) {
+        mSelectedPosition = -1;
         mCalendar.add(Calendar.MONTH, month);
         createCalendar(mCalendar);
 
@@ -131,6 +139,13 @@ public class CalendarAdapter extends BaseAdapter {
 
         } else {
             viewHolder.dateTextView.setText("");
+        }
+
+        // 선택된 셀의 배경색상 변경
+        if (position == mSelectedPosition) {
+            convertView.setBackgroundColor(Color.YELLOW);
+        } else {
+            convertView.setBackgroundColor(Color.WHITE);
         }
 
         return convertView;

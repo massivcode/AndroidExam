@@ -1,7 +1,6 @@
 
 package com.prchoe.androidexam.calendar;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,8 +18,6 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
     private CalendarView mCalendarView;
     private TextView mPresentTV;
     private Button mPrevButton, mNextButton;
-    private boolean selected = false;
-    private int selectedPos;
     private View oldView;
 
 
@@ -43,13 +40,16 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                if (oldView != null) {
-                    oldView.setBackgroundColor(Color.WHITE);
-                }
+//                if (oldView != null) {
+//                    oldView.setBackgroundColor(Color.WHITE);
+//                }
+//                view.setBackgroundColor(Color.parseColor("#B3CA6F"));
+//
+//                oldView = view;
 
-                view.setBackgroundColor(Color.parseColor("#B3CA6F"));
-
-                oldView = view;
+                mCalendarAdapter.setSelectedPosition(position);
+                // 다시 그리기
+                mCalendarAdapter.notifyDataSetChanged();
             }
         });
 
