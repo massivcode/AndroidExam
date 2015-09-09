@@ -27,6 +27,7 @@ import android.widget.SimpleAdapter;
 import com.prchoe.androidexam.activity.ActivityExamActivity;
 import com.prchoe.androidexam.activity.WebActivity;
 import com.prchoe.androidexam.animation.AnimationActivity;
+import com.prchoe.androidexam.calendar2.Calendar2Activity;
 import com.prchoe.androidexam.layout.FrameLayoutActivity;
 import com.prchoe.androidexam.mission.Mission01Activity;
 import com.prchoe.androidexam.mission.Mission02Activity;
@@ -74,6 +75,7 @@ public class MainActivity extends ListActivity {
         addItem(myData, "Extra 01: 갤러리에서 사진 선택하여 표시하기", MissionExtra01Activity.class);
         addItem(myData, "Extra 02: ListView에 Animation 적용하기", MissionExtra02Activity.class);
         addItem(myData, "월별 캘린더 만들기", CalendarActivity.class);
+        addItem(myData, "구글 캘린더 뷰", Calendar2Activity.class);
         addItem(myData, "화면이동 예제", ActivityExamActivity.class);
         addItem(myData, "WebView 연습", WebActivity.class);
         addItem(myData, "Animation 연습", AnimationActivity.class);

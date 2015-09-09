@@ -76,6 +76,8 @@
             android:name=".calendar.CalendarActivity"
             android:label="@string/title_activity_calendar" >
         </activity>
+        <activity android:name=".calendar2.Calendar2Activity"/>
+
     </application>
 
 </manifest>

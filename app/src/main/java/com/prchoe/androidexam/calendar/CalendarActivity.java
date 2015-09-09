@@ -1,23 +1,36 @@
 
 package com.prchoe.androidexam.calendar;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.prchoe.androidexam.R;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class CalendarActivity extends AppCompatActivity implements View.OnClickListener {
+public class CalendarActivity extends AppCompatActivity implements View.OnClickListener,
+        AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
     private CalendarAdapter mCalendarAdapter;
     private CalendarView mCalendarView;
     private TextView mPresentTV;
     private Button mPrevButton, mNextButton;
-
+    private ListView mScheduleListView;
+    private Map<Calendar, List<ScheduleData>> mScheduleData;
+    private List<ScheduleData> scheduleDatas;
+    private ScheduleAdapter mScheduleAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +47,14 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         mCalendarView.setAdapter(mCalendarAdapter);
         mPresentTV.setText(updateTitle(mCalendarAdapter.getCalendar()));
 
+        // 아이템 클릭 이벤트 연결
+        mCalendarView.setOnItemClickListener(this);
+        mCalendarView.setOnItemLongClickListener(this);
+
+        mScheduleData = new HashMap<Calendar, List<ScheduleData>>();
+
+        scheduleDatas = new ArrayList<ScheduleData>();
+        mScheduleAdapter = new ScheduleAdapter(this);
 
 
     }
@@ -42,6 +63,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         mPresentTV = (TextView) findViewById(R.id.present);
         mPrevButton = (Button) findViewById(R.id.prev);
         mNextButton = (Button) findViewById(R.id.next);
+        mScheduleListView = (ListView) findViewById(R.id.schedule_list_view);
     }
 
     private void initListener() {
@@ -56,7 +78,6 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         return year + "년 " + month + "월";
     }
 
-
     @Override
     public void onClick(View v) {
 
@@ -69,5 +90,53 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
                 break;
         }
         mPresentTV.setText(updateTitle(mCalendarAdapter.getCalendar()));
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        mScheduleAdapter.changeDate((Calendar) mCalendarAdapter.getItem(position));
+
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        final Calendar calendar = (Calendar)mCalendarAdapter.getItem(position);
+        AlertDialog.Builder builder = new AlertDialog.Builder(CalendarActivity.this);
+        builder.setTitle("일정 추가");
+        builder.setNegativeButton("닫기", null);
+
+        View dialogLayout = getLayoutInflater().inflate(R.layout.dialog_schedule, null);
+        // View dialogLayout =
+        // LayoutInflator.from(this).inflate(R.layout.dialog_schedule, null);
+        builder.setView(dialogLayout);
+        final EditText contentET = (EditText) dialogLayout.findViewById(R.id.schedule_content);
+        final EditText hourET = (EditText) dialogLayout.findViewById(R.id.schedule_time_hour);
+        final EditText minuteET = (EditText) dialogLayout.findViewById(R.id.schedule_time_minute);
+
+        builder.setPositiveButton("저장", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // 뭔가 처리함
+                String content = contentET.getText().toString();
+                int hour = Integer.parseInt(hourET.getText().toString());
+                int minute = Integer.parseInt(minuteET.getText().toString());
+
+                ScheduleData scheduleData = new ScheduleData(content, hour, minute);
+                scheduleDatas.add(scheduleData);
+//                Toast.makeText(getApplicationContext(), "content : " + content + " hour : " + hour + " minute : " + minute, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "calendar : " + calendar + "ScheduleData : " + scheduleData, Toast.LENGTH_SHORT).show();
+
+                mScheduleData.put(calendar, scheduleDatas);
+                mScheduleAdapter.initData(mScheduleData, calendar);
+                mScheduleListView.setAdapter(mScheduleAdapter);
+
+            }
+        });
+        mCalendarAdapter.setHasData(true, position);
+
+
+        builder.show();
+
+        return true;
     }
 }

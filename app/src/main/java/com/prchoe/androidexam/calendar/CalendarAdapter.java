@@ -24,6 +24,9 @@ public class CalendarAdapter extends BaseAdapter {
     private List<Calendar> mList;
     private Context mContext;
     private Calendar mCalendar;
+    private boolean mHasData;
+
+    private int mHasDataPosition = -1;
 
     private int mSelectedPosition = -1;
 
@@ -65,6 +68,12 @@ public class CalendarAdapter extends BaseAdapter {
             mList.add(new GregorianCalendar(year, month, i));
         }
 
+    }
+
+    public void setHasData(boolean hasData, int hasDataPos) {
+        mHasData = hasData;
+        mHasDataPosition = hasDataPos;
+        notifyDataSetChanged();
     }
 
     private void changeMonth(int month) {
@@ -141,9 +150,15 @@ public class CalendarAdapter extends BaseAdapter {
             viewHolder.dateTextView.setText("");
         }
 
-        // 선택된 셀의 배경색상 변경
-        if (position == mSelectedPosition) {
-            convertView.setBackgroundColor(Color.YELLOW);
+//        // 선택된 셀의 배경색상 변경
+//        if (position == mSelectedPosition) {
+//            convertView.setBackgroundColor(Color.YELLOW);
+//        } else {
+//            convertView.setBackgroundColor(Color.WHITE);
+//        }
+
+        if(mHasData && position == mHasDataPosition) {
+            convertView.setBackgroundColor(Color.CYAN);
         } else {
             convertView.setBackgroundColor(Color.WHITE);
         }
