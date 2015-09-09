@@ -47,7 +47,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
                     oldView.setBackgroundColor(Color.WHITE);
                 }
 
-                view.setBackgroundColor(Color.RED);
+                view.setBackgroundColor(Color.parseColor("#B3CA6F"));
 
                 oldView = view;
             }

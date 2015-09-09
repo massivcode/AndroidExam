@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="top|right"
-    android:background="@drawable/list_selector"
+    android:background="#FFFFFF"
     android:orientation="vertical">
 
     <TextView
