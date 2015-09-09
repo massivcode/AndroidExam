@@ -27,8 +27,11 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
     private CalendarView mCalendarView;
     private TextView mPresentTV;
     private Button mPrevButton, mNextButton;
+
     private ListView mScheduleListView;
+
     private Map<Calendar, List<ScheduleData>> mScheduleData;
+
     private List<ScheduleData> scheduleDatas;
     private ScheduleAdapter mScheduleAdapter;
 
@@ -51,11 +54,13 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         mCalendarView.setOnItemClickListener(this);
         mCalendarView.setOnItemLongClickListener(this);
 
+        // listView의 데이터 준비
         mScheduleData = new HashMap<Calendar, List<ScheduleData>>();
 
+        // 일정과 그 시간
         scheduleDatas = new ArrayList<ScheduleData>();
         mScheduleAdapter = new ScheduleAdapter(this);
-
+        mScheduleListView.setAdapter(mScheduleAdapter);
 
     }
 
@@ -121,14 +126,12 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
                 int hour = Integer.parseInt(hourET.getText().toString());
                 int minute = Integer.parseInt(minuteET.getText().toString());
 
+
                 ScheduleData scheduleData = new ScheduleData(content, hour, minute);
                 scheduleDatas.add(scheduleData);
-//                Toast.makeText(getApplicationContext(), "content : " + content + " hour : " + hour + " minute : " + minute, Toast.LENGTH_SHORT).show();
-//                Toast.makeText(getApplicationContext(), "calendar : " + calendar + "ScheduleData : " + scheduleData, Toast.LENGTH_SHORT).show();
-
                 mScheduleData.put(calendar, scheduleDatas);
                 mScheduleAdapter.initData(mScheduleData, calendar);
-                mScheduleListView.setAdapter(mScheduleAdapter);
+
 
             }
         });
