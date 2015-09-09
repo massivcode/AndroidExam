@@ -1,9 +1,11 @@
 
 package com.prchoe.androidexam.calendar;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -17,6 +19,10 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
     private CalendarView mCalendarView;
     private TextView mPresentTV;
     private Button mPrevButton, mNextButton;
+    private boolean selected = false;
+    private int selectedPos;
+    private View oldView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +38,20 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         mCalendarView = (CalendarView) findViewById(R.id.calendar);
         mCalendarView.setAdapter(mCalendarAdapter);
         mPresentTV.setText(updateTitle(mCalendarAdapter.getCalendar()));
+
+        mCalendarView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                if (oldView != null) {
+                    oldView.setBackgroundColor(Color.WHITE);
+                }
+
+                view.setBackgroundColor(Color.RED);
+
+                oldView = view;
+            }
+        });
 
 
     }
@@ -53,8 +73,6 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
 
         return year + "년 " + month + "월";
     }
-
-
 
 
     @Override

@@ -3,7 +3,6 @@ package com.prchoe.androidexam.calendar;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -120,7 +119,6 @@ public class CalendarAdapter extends BaseAdapter {
         Calendar calendar = mList.get(position);
 
         if (calendar != null) {
-            Log.d("test", "date : " + calendar.get(Calendar.DATE) + "\r\n pos : " + position);
             viewHolder.dateTextView.setText("" + calendar.get(Calendar.DATE));
 
             if (position % 7 == 0) {
