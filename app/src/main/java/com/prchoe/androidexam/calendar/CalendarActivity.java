@@ -99,55 +99,55 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
         mScheduleAdapter.changeDate((Calendar) mCalendarAdapter.getItem(position));
 
     }
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-        if(mCalendarAdapter.getItem(position) != null) {
+        if (mCalendarAdapter.getItem(position) != null) {
 
+            final Calendar calendar = (Calendar) mCalendarAdapter.getItem(position);
+            AlertDialog.Builder builder = new AlertDialog.Builder(CalendarActivity.this);
+            builder.setTitle("일정 추가");
+            builder.setNegativeButton("닫기", null);
 
-        final Calendar calendar = (Calendar)mCalendarAdapter.getItem(position);
-        AlertDialog.Builder builder = new AlertDialog.Builder(CalendarActivity.this);
-        builder.setTitle("일정 추가");
-        builder.setNegativeButton("닫기", null);
+            View dialogLayout = getLayoutInflater().inflate(R.layout.dialog_schedule, null);
+            // View dialogLayout =
+            // LayoutInflator.from(this).inflate(R.layout.dialog_schedule,
+            // null);
+            builder.setView(dialogLayout);
+            final EditText contentET = (EditText) dialogLayout.findViewById(R.id.schedule_content);
+            final EditText hourET = (EditText) dialogLayout.findViewById(R.id.schedule_time_hour);
+            final EditText minuteET = (EditText) dialogLayout
+                    .findViewById(R.id.schedule_time_minute);
 
-        View dialogLayout = getLayoutInflater().inflate(R.layout.dialog_schedule, null);
-        // View dialogLayout =
-        // LayoutInflator.from(this).inflate(R.layout.dialog_schedule, null);
-        builder.setView(dialogLayout);
-        final EditText contentET = (EditText) dialogLayout.findViewById(R.id.schedule_content);
-        final EditText hourET = (EditText) dialogLayout.findViewById(R.id.schedule_time_hour);
-        final EditText minuteET = (EditText) dialogLayout.findViewById(R.id.schedule_time_minute);
+            builder.setPositiveButton("저장", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // 뭔가 처리함
+                    String content = contentET.getText().toString();
+                    int hour = Integer.parseInt(hourET.getText().toString());
+                    int minute = Integer.parseInt(minuteET.getText().toString());
 
-        builder.setPositiveButton("저장", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // 뭔가 처리함
-                String content = contentET.getText().toString();
-                int hour = Integer.parseInt(hourET.getText().toString());
-                int minute = Integer.parseInt(minuteET.getText().toString());
+                    ScheduleData scheduleData = new ScheduleData(content, hour, minute);
 
-                ScheduleData scheduleData = new ScheduleData(content, hour, minute);
+                    if (mScheduleData.containsKey(calendar)) {
+                        scheduleDatas = mScheduleData.get(calendar);
+                        scheduleDatas.add(scheduleData);
 
+                    } else {
+                        scheduleDatas = new ArrayList<ScheduleData>();
+                        scheduleDatas.add(scheduleData);
+                    }
 
-                if (mScheduleData.containsKey(calendar)) {
-                    scheduleDatas = mScheduleData.get(calendar);
-                    scheduleDatas.add(scheduleData);
-
-                } else {
-                    scheduleDatas = new ArrayList<ScheduleData>();
-                    scheduleDatas.add(scheduleData);
+                    mScheduleData.put(calendar, scheduleDatas);
+                    mScheduleAdapter.initData(mScheduleData, calendar);
                 }
+            });
 
-                mScheduleData.put(calendar, scheduleDatas);
-                mScheduleAdapter.initData(mScheduleData, calendar);
-            }
-        });
-
-
-        builder.show();
+            builder.show();
         }
         return true;
     }

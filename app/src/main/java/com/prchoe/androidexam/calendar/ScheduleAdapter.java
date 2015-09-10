@@ -2,7 +2,6 @@
 package com.prchoe.androidexam.calendar;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,8 +27,6 @@ public class ScheduleAdapter extends BaseAdapter {
     public ScheduleAdapter(Context mContext) {
         this.mContext = mContext;
     }
-
-
 
     public void changeDate(Calendar key) {
         mKey = key;
@@ -57,7 +54,6 @@ public class ScheduleAdapter extends BaseAdapter {
             return 1;
         }
 
-
     }
 
     @Override
@@ -67,13 +63,12 @@ public class ScheduleAdapter extends BaseAdapter {
 
     public Object getItem(Calendar calendar) {
 
-        if(mData != null) {
+        if (mData != null) {
             return mData.get(calendar);
         } else {
             return null;
         }
     }
-
 
     @Override
     public long getItemId(int position) {
@@ -87,9 +82,11 @@ public class ScheduleAdapter extends BaseAdapter {
         if (convertView == null) {
             holder = new ViewHolder();
 
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.activity_schedule_item, null);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.activity_schedule_item,
+                    null);
             holder.scheduleItemTime = (TextView) convertView.findViewById(R.id.schedule_item_time);
-            holder.scheduleItemContent = (TextView) convertView.findViewById(R.id.schedule_item_content);
+            holder.scheduleItemContent = (TextView) convertView
+                    .findViewById(R.id.schedule_item_content);
 
             convertView.setTag(holder);
 
@@ -98,22 +95,17 @@ public class ScheduleAdapter extends BaseAdapter {
         }
 
         List<ScheduleData> datas =
-                     (List<ScheduleData>) getItem(mKey);
-
-
-
+                (List<ScheduleData>) getItem(mKey);
 
         if (datas != null) {
-            Log.d(TAG, "getView pos : " + position);
-            Log.d(TAG, "getView datas.size: " + datas.size());
             holder.scheduleItemContent.setText(datas.get(position).getContent());
-            holder.scheduleItemTime.setText(datas.get(position).getHour() + "시 " + datas.get(position).getMinute() + "분");
+            holder.scheduleItemTime.setText(datas.get(position).getHour() + "시 "
+                    + datas.get(position).getMinute() + "분");
             holder.scheduleItemTime.setVisibility(View.VISIBLE);
         } else {
             holder.scheduleItemContent.setText("데이터가 없습니다.");
             holder.scheduleItemTime.setVisibility(View.GONE);
         }
-
 
         return convertView;
     }
