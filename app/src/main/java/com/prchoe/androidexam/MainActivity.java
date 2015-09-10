@@ -37,6 +37,7 @@ import com.prchoe.androidexam.mission.MissionExtra01Activity;
 import com.prchoe.androidexam.mission.mission03.Mission03Activity;
 import com.prchoe.androidexam.mission.mission_extra_02.MissionExtra02Activity;
 import com.prchoe.androidexam.calendar.CalendarActivity;
+import com.prchoe.androidexam.mission.mission_extra_03.MissionExtra03Activity;
 
 import java.text.Collator;
 import java.util.ArrayList;
@@ -77,6 +78,7 @@ public class MainActivity extends ListActivity {
         addItem(myData, "도전! 07 & 08 : 캘린더", CalendarActivity.class);
         addItem(myData, "구글 캘린더 뷰", Calendar2Activity.class);
         addItem(myData, "화면이동 예제", ActivityExamActivity.class);
+        addItem(myData, "알록달록 리스트뷰", MissionExtra03Activity.class);
         addItem(myData, "WebView 연습", WebActivity.class);
         addItem(myData, "Animation 연습", AnimationActivity.class);
         // ----- 메뉴 추가 여기까지
