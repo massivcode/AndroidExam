@@ -105,6 +105,9 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        if(mCalendarAdapter.getItem(position) != null) {
+
+
         final Calendar calendar = (Calendar)mCalendarAdapter.getItem(position);
         AlertDialog.Builder builder = new AlertDialog.Builder(CalendarActivity.this);
         builder.setTitle("일정 추가");
@@ -145,7 +148,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
 
 
         builder.show();
-
+        }
         return true;
     }
 }
