@@ -22,7 +22,6 @@ public class ScheduleAdapter extends BaseAdapter {
 
     private Context mContext;
     private Map<Calendar, List<ScheduleData>> mData;
-    private Calendar mCalendar;
     private Calendar mKey;
     private String TAG = "test";
 
@@ -39,7 +38,7 @@ public class ScheduleAdapter extends BaseAdapter {
 
     public void initData(Map<Calendar, List<ScheduleData>> mData, Calendar calendar) {
         this.mData = mData;
-        mCalendar = calendar;
+        mKey = calendar;
         notifyDataSetChanged();
     }
 
