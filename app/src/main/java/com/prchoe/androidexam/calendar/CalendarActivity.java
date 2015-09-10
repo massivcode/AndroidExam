@@ -126,13 +126,20 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
                 int hour = Integer.parseInt(hourET.getText().toString());
                 int minute = Integer.parseInt(minuteET.getText().toString());
 
-
                 ScheduleData scheduleData = new ScheduleData(content, hour, minute);
-                scheduleDatas.add(scheduleData);
+
+
+                if (mScheduleData.containsKey(calendar)) {
+                    scheduleDatas = mScheduleData.get(calendar);
+                    scheduleDatas.add(scheduleData);
+
+                } else {
+                    scheduleDatas = new ArrayList<ScheduleData>();
+                    scheduleDatas.add(scheduleData);
+                }
+
                 mScheduleData.put(calendar, scheduleDatas);
                 mScheduleAdapter.initData(mScheduleData, calendar);
-
-
             }
         });
 
