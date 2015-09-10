@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -75,6 +77,10 @@ public class ColorfulAdapter extends BaseAdapter {
         blue = (int) (Math.random() * 254 + 1);
 
         convertView.setBackgroundColor(Color.argb(alpha, red, green, blue));
+
+       Animation anim =  AnimationUtils.loadAnimation(mContext, R.anim.extra02);
+
+        convertView.startAnimation(anim);
 
         return convertView;
     }
