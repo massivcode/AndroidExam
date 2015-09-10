@@ -2,6 +2,7 @@ package com.prchoe.androidexam.calendar;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -43,6 +44,7 @@ public class CalendarView extends GridView implements AdapterView.OnItemClickLis
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Log.d("test", "onItemClick : ");
         if (getAdapter() != null) {
             if(getAdapter() instanceof CalendarAdapter) {
                 CalendarAdapter adapter = (CalendarAdapter)getAdapter();

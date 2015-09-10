@@ -150,18 +150,18 @@ public class CalendarAdapter extends BaseAdapter {
             viewHolder.dateTextView.setText("");
         }
 
-//        // 선택된 셀의 배경색상 변경
-//        if (position == mSelectedPosition) {
-//            convertView.setBackgroundColor(Color.YELLOW);
-//        } else {
-//            convertView.setBackgroundColor(Color.WHITE);
-//        }
-
-        if(mHasData && position == mHasDataPosition) {
-            convertView.setBackgroundColor(Color.CYAN);
+        // 선택된 셀의 배경색상 변경
+        if (position == mSelectedPosition) {
+            convertView.setBackgroundColor(Color.YELLOW);
         } else {
             convertView.setBackgroundColor(Color.WHITE);
         }
+
+//        if(mHasData && position == mHasDataPosition) {
+//            convertView.setBackgroundColor(Color.CYAN);
+//        } else {
+//            convertView.setBackgroundColor(Color.WHITE);
+//        }
 
         return convertView;
     }

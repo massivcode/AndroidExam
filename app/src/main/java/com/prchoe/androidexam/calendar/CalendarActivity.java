@@ -51,6 +51,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         mPresentTV.setText(updateTitle(mCalendarAdapter.getCalendar()));
 
         // 아이템 클릭 이벤트 연결
+//        mCalendarView.setOnClickListener(this);
         mCalendarView.setOnItemClickListener(this);
         mCalendarView.setOnItemLongClickListener(this);
 
@@ -101,6 +102,8 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         mScheduleAdapter.changeDate((Calendar) mCalendarAdapter.getItem(position));
+        mCalendarAdapter.setSelectedPosition(position);
+        mCalendarAdapter.notifyDataSetChanged();
 
     }
 
