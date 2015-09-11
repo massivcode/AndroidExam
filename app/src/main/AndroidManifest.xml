@@ -81,6 +81,10 @@
             android:name=".mission.mission_extra_03.MissionExtra03Activity"
             android:label="@string/title_activity_mission_extra03" >
         </activity>
+        <activity
+            android:name=".thread.ThreadActivity"
+            android:label="@string/title_activity_thread" >
+        </activity>
     </application>
 
 </manifest>

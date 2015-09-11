@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    >
+
+    <Button
+        android:id="@+id/btn_thread1"
+        android:text="Thread1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+<TextView
+    android:id="@+id/tv_number1"
+    android:text="0"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+
+
+
+    <Button
+        android:id="@+id/btn_thread2"
+        android:text="Thread2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_number2"
+        android:text="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>
