@@ -115,4 +115,5 @@ public class ScheduleAdapter extends BaseAdapter {
         TextView scheduleItemContent;
     }
 
+
 }

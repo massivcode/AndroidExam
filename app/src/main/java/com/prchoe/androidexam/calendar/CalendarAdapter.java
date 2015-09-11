@@ -3,6 +3,7 @@ package com.prchoe.androidexam.calendar;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,11 +23,10 @@ import java.util.List;
 public class CalendarAdapter extends BaseAdapter {
 
     private List<Calendar> mList;
+    private List<Boolean> mHasData = new ArrayList<>();
     private Context mContext;
     private Calendar mCalendar;
-    private boolean mHasData;
 
-    private int mHasDataPosition = -1;
 
     private int mSelectedPosition = -1;
 
@@ -61,20 +61,17 @@ public class CalendarAdapter extends BaseAdapter {
 
         for (int i = 1; i < firtstDay; i++) {
             mList.add(null);
+            mHasData.add(false);
         }
 
         // 이번달 달력 데이터
         for (int i = 1; i <= lastDay; i++) {
             mList.add(new GregorianCalendar(year, month, i));
+            mHasData.add(false);
         }
 
     }
 
-    public void setHasData(boolean hasData, int hasDataPos) {
-        mHasData = hasData;
-        mHasDataPosition = hasDataPos;
-        notifyDataSetChanged();
-    }
 
     private void changeMonth(int month) {
         mSelectedPosition = -1;
@@ -135,6 +132,15 @@ public class CalendarAdapter extends BaseAdapter {
         // Data를 Layout에 설정
         Calendar calendar = mList.get(position);
 
+        // 위치에 데이터가 있을 경우, 볼드 이탤릭으로 바꾼다.
+        if(mHasData.get(position)) {
+            viewHolder.dateTextView.setTypeface(null, Typeface.BOLD_ITALIC);
+            viewHolder.dateTextView.setTextSize(25);
+        } else {
+            viewHolder.dateTextView.setTypeface(null, Typeface.NORMAL);
+            viewHolder.dateTextView.setTextSize(20);
+        }
+
         if (calendar != null) {
             viewHolder.dateTextView.setText("" + calendar.get(Calendar.DATE));
 
@@ -174,5 +180,9 @@ public class CalendarAdapter extends BaseAdapter {
         return mCalendar;
     }
 
+
+    public void setmHasData(int position, boolean hasData) {
+        mHasData.set(position, hasData);
+    }
 
 }

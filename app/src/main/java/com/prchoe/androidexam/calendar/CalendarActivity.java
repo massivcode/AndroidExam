@@ -112,6 +112,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         if (mCalendarAdapter.getItem(position) != null) {
 
             final Calendar calendar = (Calendar) mCalendarAdapter.getItem(position);
+            final int dataPosition = position;
             AlertDialog.Builder builder = new AlertDialog.Builder(CalendarActivity.this);
             builder.setTitle("일정 추가");
             builder.setNegativeButton("닫기", null);
@@ -146,6 +147,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
                     }
 
                     mScheduleData.put(calendar, scheduleDatas);
+                    mCalendarAdapter.setmHasData(dataPosition, true);
                     mScheduleAdapter.initData(mScheduleData, calendar);
                 }
             });
