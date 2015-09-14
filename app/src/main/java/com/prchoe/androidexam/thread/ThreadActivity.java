@@ -30,6 +30,7 @@ public class ThreadActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate");
         setContentView(R.layout.activity_thread);
 
         mThread1Btn = (Button) findViewById(R.id.btn_thread1);
@@ -43,6 +44,9 @@ public class ThreadActivity extends AppCompatActivity implements View.OnClickLis
         mThread1Btn.setOnClickListener(this);
         mThread2Btn.setOnClickListener(this);
     }
+
+
+    private DownloadTask mDownloadTask;
 
     @Override
     public void onClick(View v) {
@@ -61,7 +65,12 @@ public class ThreadActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btn_thread2:
                 // Task는 한번만 실행된다!
                 // member로 빼고 실행해도 처음 한번만 실행되고, 다음부터는 안됨.
-                new DownloadTask().execute();
+
+                if(mDownloadTask == null || mDownloadTask.getStatus() != AsyncTask.Status.RUNNING) {
+                    mDownloadTask = new DownloadTask();
+                    mDownloadTask.execute();
+                }
+
                 break;
         }
     }
@@ -252,6 +261,59 @@ public class ThreadActivity extends AppCompatActivity implements View.OnClickLis
 
             mmBuilder.show();
         }
+
+        @Override
+        protected void onCancelled(Void aVoid) {
+            super.onCancelled(aVoid);
+
+            Log.d(TAG, "onCancelled(Void aVoid)");
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+            Log.d(TAG, "onCancelled()");
+        }
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "onRestart");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy ");
+
+        if(mDownloadTask != null) {
+            mDownloadTask.cancel(true);
+            mDownloadTask = null;
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume");
+    }
 }
