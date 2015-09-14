@@ -2,13 +2,16 @@
 package com.prchoe.androidexam.thread;
 
 import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.prchoe.androidexam.R;
@@ -22,6 +25,8 @@ public class ThreadActivity extends AppCompatActivity implements View.OnClickLis
     private TextView mNumberTextView1;
     private TextView mNumberTextView2;
 
+    private ProgressBar mProgressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +38,8 @@ public class ThreadActivity extends AppCompatActivity implements View.OnClickLis
         mNumberTextView1 = (TextView) findViewById(R.id.tv_number1);
         mNumberTextView2 = (TextView) findViewById(R.id.tv_number2);
 
+        mProgressBar = (ProgressBar)findViewById(R.id.progressbar);
+
         mThread1Btn.setOnClickListener(this);
         mThread2Btn.setOnClickListener(this);
     }
@@ -43,8 +50,18 @@ public class ThreadActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btn_thread1:
                 progressDialogExam();
 
+
+                // 굉장히 오래 걸리는 처리 (10초)
+                // for(...)
+
+
+                // 완료되었습니다.
+
                 break;
             case R.id.btn_thread2:
+                // Task는 한번만 실행된다!
+                // member로 빼고 실행해도 처음 한번만 실행되고, 다음부터는 안됨.
+                new DownloadTask().execute();
                 break;
         }
     }
@@ -170,4 +187,71 @@ public class ThreadActivity extends AppCompatActivity implements View.OnClickLis
 
         thread.start();
     }
+
+    // AsyncTask<doInBackground, onProgressUpdate, onPostExecute>
+    private class DownloadTask extends AsyncTask<Void, Integer, Void>{
+
+        private AlertDialog.Builder mmBuilder;
+
+
+        @Override
+        // 초기화
+        // doInBackground 전에 호출 됨
+        // UI Thread
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            mmBuilder = new AlertDialog.Builder(ThreadActivity.this);
+            mmBuilder.setMessage("다운로드가 완료되었습니다.");
+            mmBuilder.setNegativeButton("닫기", null);
+
+            mProgressBar.setProgress(0);
+        }
+
+        @Override
+        // Background Thread
+        // == Worker Thread
+        protected Void doInBackground(Void... params) {
+            // 다운로드 처리
+            for(int i = 0; i < 100; i++) {
+                // 0.2초 쉬고
+                try {
+                    Thread.sleep(20);
+                } catch (InterruptedException e) {
+                    Log.e("TAG", e.getMessage());
+                }
+
+                // onProgressUpdate를 호출
+                publishProgress(i + 1);
+
+            }
+
+            return null;
+        }
+
+        @Override
+        // 직접 호출하지 않는 이유 : 죽으니까 => publishProgress()로 호출할 것
+        // doInBackground에서 publishProgrees로 호출하면 호출됨
+        // UI Thread
+        // http://developer.android.com/intl/ko/reference/android/os/AsysncTask.html
+        // Integer... values => 배열이 아닌 것을 넘겨도 배열로 만들어줌
+        // int i = 1; 을 넘겨도 values[0] 으로 됨
+        protected void onProgressUpdate(Integer... values) {
+
+            mProgressBar.setProgress(values[0]);
+            mNumberTextView2.setText(values[0] + "%");
+
+        }
+
+        @Override
+        // UI Thread
+        // doInBackground가 수행된 후에 호출 됨
+        // doInBackground에서 return된 값이 파라메터로 넘어옴
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+            mmBuilder.show();
+        }
+    }
+
 }

@@ -21,7 +21,7 @@
 
     <Button
         android:id="@+id/btn_thread2"
-        android:text="Thread2"
+        android:text="AsyncTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
@@ -31,5 +31,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <ProgressBar
+        android:id="@+id/progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:max="100"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
