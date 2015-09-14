@@ -38,6 +38,7 @@ import com.prchoe.androidexam.mission.mission03.Mission03Activity;
 import com.prchoe.androidexam.mission.mission_extra_02.MissionExtra02Activity;
 import com.prchoe.androidexam.calendar.CalendarActivity;
 import com.prchoe.androidexam.mission.mission_extra_03.MissionExtra03Activity;
+import com.prchoe.androidexam.parsing.json.WeatherActivity;
 import com.prchoe.androidexam.thread.ThreadActivity;
 
 import java.text.Collator;
@@ -83,6 +84,7 @@ public class MainActivity extends ListActivity {
         addItem(myData, "WebView 연습", WebActivity.class);
         addItem(myData, "Animation 연습", AnimationActivity.class);
         addItem(myData, "Thread 연습", ThreadActivity.class);
+        addItem(myData, "JSON 파싱 - 날씨정보", WeatherActivity.class);
         // ----- 메뉴 추가 여기까지
 
         // 이름 순 정렬
