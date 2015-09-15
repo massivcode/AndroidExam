@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.prchoe.androidexam.R;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -17,7 +16,6 @@ import java.util.List;
  */
 public class WeatherAdapter extends BaseAdapter {
 
-    private SimpleDateFormat mFormat = new SimpleDateFormat("HH:mm");
     private List<Weather> mList;
     private Context mContext;
 
@@ -61,7 +59,7 @@ public class WeatherAdapter extends BaseAdapter {
         }
 
         Weather weather = mList.get(position);
-        holder.timeTextView.setText("" + mFormat.format(weather.getTime()));
+        holder.timeTextView.setText(weather.getTime());
         holder.tempTextView.setText(weather.getTemp() +  "℃");
         holder.descriptionTextView.setText(weather.getDescription());
 
