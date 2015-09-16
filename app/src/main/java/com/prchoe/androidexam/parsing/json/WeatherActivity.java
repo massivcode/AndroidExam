@@ -4,7 +4,6 @@ package com.prchoe.androidexam.parsing.json;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -61,20 +60,20 @@ public class WeatherActivity extends AppCompatActivity implements View.OnKeyList
         return false;
     }
 
-    class WeatherInfoLoadTask extends AsyncTask<String, Void, Void> {
+    class WeatherInfoLoadTask extends AsyncTask<String, Void, List> {
 
         @Override
         // UI Thread
         protected void onPreExecute() {
-            super.onPreExecute();
             mProgressBar.setVisibility(View.VISIBLE);
 
         }
 
         @Override
         // Background Thread
-        protected Void doInBackground(String... params) {
+        protected List doInBackground(String... params) { // 첫번째 인자
             String query = params[0];
+            List<Weather> weatherList = null;
 
             try {
                 // HTTP에서 내용을 String으로 받아온다.
@@ -85,7 +84,7 @@ public class WeatherActivity extends AppCompatActivity implements View.OnKeyList
                 JSONArray jsonArray = jsonObject.getJSONArray("list");
 
                 // 날씨 정보 저장할 리스트
-                List<Weather> weatherList = new ArrayList<Weather>();
+                weatherList = new ArrayList<Weather>();
 
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject object = jsonArray.getJSONObject(i);
@@ -97,20 +96,23 @@ public class WeatherActivity extends AppCompatActivity implements View.OnKeyList
                     weatherList.add(new Weather(time[1], temp, description));
                 }
 
-                mAdapter = new WeatherAdapter(WeatherActivity.this, weatherList);
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
-            return null;
+            return weatherList;
         }
 
         @Override
         // UI Thread
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
+        protected void onProgressUpdate(Void... values) { // 두번째 인자
 
+        }
+
+        @Override
+        // UI Thread
+        protected void onPostExecute(List list) { // 세번째 인자
+            mAdapter = new WeatherAdapter(WeatherActivity.this, list);
             mWeatherListView.setAdapter(mAdapter);
             mProgressBar.setVisibility(View.GONE);
         }

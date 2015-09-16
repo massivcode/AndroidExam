@@ -197,6 +197,9 @@ public class ThreadActivity extends AppCompatActivity implements View.OnClickLis
         thread.start();
     }
 
+    // 맨앞 : execute에서 인자를 받는다 -> doInBackground로 전달
+    // 중간 : progressUpdate 사용할 때, doInBackground의 publishProgress()로 받아서 onProgressUpdate로 전달
+    // 마지막 : doInBackground에서 return 되는 값이 onPostExecute로 전달
     // AsyncTask<doInBackground, onProgressUpdate, onPostExecute>
     private class DownloadTask extends AsyncTask<Void, Integer, Void>{
 
