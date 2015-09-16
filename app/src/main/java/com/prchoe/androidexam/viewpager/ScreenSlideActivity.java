@@ -1,6 +1,7 @@
 package com.prchoe.androidexam.viewpager;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -31,6 +32,9 @@ import java.util.List;
 public class ScreenSlideActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
+
+    private TabLayout mTabLayout;
+
     private List<Fragment> mList;
 
 
@@ -41,15 +45,35 @@ public class ScreenSlideActivity extends AppCompatActivity {
 
         mViewPager = (ViewPager)findViewById(R.id.viewpager);
 
+        mTabLayout = (TabLayout)findViewById(R.id.tap_layout);
+
         // 짝퉁데이터
         mList = new ArrayList<>();
         for(int i = 0; i < 10; i++) {
             mList.add(new ColorFragment());
+            mTabLayout.addTab(mTabLayout.newTab().setText("Tab " + (i + 1)));
         }
 
         ScreenSlidePagerAdapter adapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), mList);
 
         mViewPager.setAdapter(adapter);
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
+        mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                mViewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     // 그냥 PagerAdapter는 화면을 fragment로 안만들었을 때 사용한다.
