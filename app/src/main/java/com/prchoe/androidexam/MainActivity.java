@@ -29,6 +29,7 @@ import com.prchoe.androidexam.activity.WebActivity;
 import com.prchoe.androidexam.animation.AnimationActivity;
 import com.prchoe.androidexam.calendar2.Calendar2Activity;
 import com.prchoe.androidexam.fragment.FragmentActivity;
+import com.prchoe.androidexam.graphic.GraphicActivity;
 import com.prchoe.androidexam.layout.FrameLayoutActivity;
 import com.prchoe.androidexam.mission.Mission01Activity;
 import com.prchoe.androidexam.mission.Mission02Activity;
@@ -40,6 +41,7 @@ import com.prchoe.androidexam.mission.mission_extra_02.MissionExtra02Activity;
 import com.prchoe.androidexam.calendar.CalendarActivity;
 import com.prchoe.androidexam.mission.mission_extra_03.MissionExtra03Activity;
 import com.prchoe.androidexam.parsing.json.WeatherActivity;
+import com.prchoe.androidexam.receiver.BroadcastActivity;
 import com.prchoe.androidexam.thread.ThreadActivity;
 import com.prchoe.androidexam.viewpager.ScreenSlideActivity;
 
@@ -89,6 +91,8 @@ public class MainActivity extends ListActivity {
         addItem(myData, "JSON 파싱 - 날씨정보", WeatherActivity.class);
         addItem(myData, "Fragment", FragmentActivity.class);
         addItem(myData, "ViewPager", ScreenSlideActivity.class);
+        addItem(myData, "BroadcastReceiver", BroadcastActivity.class);
+        addItem(myData, "Graphic", GraphicActivity.class);
         // ----- 메뉴 추가 여기까지
 
         // 이름 순 정렬

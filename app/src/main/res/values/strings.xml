@@ -19,4 +19,5 @@
     <string name="title_activity_thread">ThreadActivity</string>
     <string name="title_activity_weather">WeatherActivity</string>
     <string name="title_activity_fragment">FragmentActivity</string>
+    <string name="title_activity_graphic">GraphicActivity</string>
 </resources>

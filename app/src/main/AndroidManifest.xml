@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.prchoe.androidexam" >
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -89,7 +90,24 @@
             android:name=".fragment.FragmentActivity"
             android:label="@string/title_activity_fragment" >
         </activity>
-        <activity android:name=".viewpager.ScreenSlideActivity"/>
+        <activity android:name=".viewpager.ScreenSlideActivity" />
+        <activity android:name=".receiver.BroadcastActivity" />
+
+        <receiver
+            android:name=".receiver.MyReceiver"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_LOW" />
+                <action android:name="ANDROID.INTENT.ACTION.AIRPLANE_MODE" />
+                <action android:name="android.intent.action.MY_BROADCAST" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".graphic.GraphicActivity"
+            android:label="@string/title_activity_graphic" >
+        </activity>
     </application>
 
 </manifest>
