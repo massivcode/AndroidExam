@@ -93,6 +93,14 @@
         <activity android:name=".viewpager.ScreenSlideActivity" />
         <activity android:name=".receiver.BroadcastActivity" />
 
+        <activity
+            android:name=".graphic.GraphicActivity"
+            android:label="@string/title_activity_graphic" >
+        </activity>
+
+        <activity android:name=".database.LoginActivity"/>
+        <activity android:name=".database.SignUpActivity"/>
+
         <receiver
             android:name=".receiver.MyReceiver"
             android:enabled="true"
@@ -104,10 +112,7 @@
             </intent-filter>
         </receiver>
 
-        <activity
-            android:name=".graphic.GraphicActivity"
-            android:label="@string/title_activity_graphic" >
-        </activity>
+
     </application>
 
 </manifest>

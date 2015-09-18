@@ -28,6 +28,7 @@ import com.prchoe.androidexam.activity.ActivityExamActivity;
 import com.prchoe.androidexam.activity.WebActivity;
 import com.prchoe.androidexam.animation.AnimationActivity;
 import com.prchoe.androidexam.calendar2.Calendar2Activity;
+import com.prchoe.androidexam.database.LoginActivity;
 import com.prchoe.androidexam.fragment.FragmentActivity;
 import com.prchoe.androidexam.graphic.GraphicActivity;
 import com.prchoe.androidexam.layout.FrameLayoutActivity;
@@ -93,6 +94,7 @@ public class MainActivity extends ListActivity {
         addItem(myData, "ViewPager", ScreenSlideActivity.class);
         addItem(myData, "BroadcastReceiver", BroadcastActivity.class);
         addItem(myData, "Graphic", GraphicActivity.class);
+        addItem(myData, "Database", LoginActivity.class);
         // ----- 메뉴 추가 여기까지
 
         // 이름 순 정렬
