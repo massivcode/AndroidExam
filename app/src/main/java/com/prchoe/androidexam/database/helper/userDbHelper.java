@@ -40,15 +40,11 @@ public class UserDbHelper extends SQLiteOpenHelper {
 
     }
 
-    public long insert(String nickName, String email, String password) {
+    public long insert(ContentValues values) {
         // Gets the data repository in write mode
         SQLiteDatabase db = getWritableDatabase();
 
         // Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(UserContract.UserEntry.COLUMN_NAME_NICKNAME, nickName);
-        values.put(UserContract.UserEntry.COLUMN_NAME_EMAIL, email);
-        values.put(UserContract.UserEntry.COLUMN_NAME_PASSWORD, password);
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
