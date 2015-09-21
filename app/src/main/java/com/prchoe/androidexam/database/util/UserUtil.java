@@ -37,17 +37,33 @@ public class UserUtil {
 
         Cursor c = new UserDbHelper(context).query(where, whereArgs);
 
-        if(c != null) {
+        if(c.getCount() > 0) {
             c.moveToFirst();
 
-            Log.d("test", "index 0 : " + c.getString(0)); // _id
-            Log.d("test", "index 1 : " + c.getString(1)); // 닉네임
-            Log.d("test", "index 2 : " + c.getString(2)); // email
-            Log.d("test", "index 3 : " + c.getString(3)); // password
-            if(c.getString(2).equals(email) && c.getString(3).equals(password)) {
+            if(c.getString(c.getColumnIndexOrThrow(UserContract.UserEntry.COLUMN_NAME_EMAIL)).equals(email)
+                    && c.getString(c.getColumnIndexOrThrow(UserContract.UserEntry.COLUMN_NAME_PASSWORD)).equals(password)) {
                 result = true;
             }
         }
+        return result;
+    }
+
+    public static boolean isValidEmail(Context context, String email) {
+        boolean result = false;
+
+        String where = UserContract.UserEntry.COLUMN_NAME_EMAIL + " = ?";
+        String[] whereArgs = new String[]{email};
+
+        Cursor c = new UserDbHelper(context).query(where, whereArgs);
+        c.moveToFirst();
+
+        if(c.getCount() == 0) {
+            result = true;
+            Log.d("test", "isValid : " + result);
+        }
+
+        Log.d("test", "isValid : " + result);
+
         return result;
     }
 }

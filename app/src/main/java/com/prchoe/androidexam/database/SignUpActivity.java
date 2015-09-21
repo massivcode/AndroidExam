@@ -71,6 +71,22 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         mButtonSignUp.setOnClickListener(this);
 
+        mEditTextEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                       if(!mEditTextEmail.getText().toString().isEmpty()) {
+                           if(hasFocus == false) {
+                               boolean result = UserUtil.isValidEmail(SignUpActivity.this ,mEditTextEmail.getText().toString());
+                               if(result == false) {
+                                   mTIL2.setError("가입 불가능한 이메일 입니다.");
+                               } else {
+                                   mTIL2.setError("");
+                               }
+                           }
+                       }
+            }
+        });
+
     }
 
     @Override
