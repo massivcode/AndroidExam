@@ -1,0 +1,25 @@
+public static String getTime(long milliSeconds) {
+		String result = "";
+
+		int time = (int) milliSeconds / 1000;
+
+		int hour 		= time / 3600;
+		int minute		= (time - (hour * 3600)) / 60;
+		int second 	= time - ((hour * 3600) + (minute * 60));
+
+		return (getTimeToString(hour).equals("") ? "" : getTimeToString(hour) + ":") + getTimeToString(minute) + ":" + getTimeToString(second);
+	}
+
+	public static String getTimeToString(int time) {
+		String result = "";
+
+		if (time == 0) {
+			result = "";
+		}
+
+		else if (time < 10) {
+			result = "0" + String.valueOf(time);
+		}
+
+		return result;
+	}
